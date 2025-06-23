@@ -4,20 +4,22 @@ import speech_recognition as sr
 def open_gmail():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Say something like: Open Gmail")
+        print("🎤 Speak now (say: Open Gmail)...")
         audio = recognizer.listen(source)
 
         try:
             command = recognizer.recognize_google(audio)
-            if "open Gmail" in command.lower():
+            print("You said:", command)  # 🔍 Check what it recognized
+
+            if "open gmail" in command.lower():
                 webbrowser.open("https://mail.google.com")
-                print("Opening Gmail...")
+                print("✅ Opening Gmail...")
             else:
-                print("Command not recognized.")
+                print("❌ Command not recognized.")
         except sr.UnknownValueError:
-            print("Could not understand audio")
+            print("⚠️ Could not understand audio")
         except sr.RequestError:
-            print("Request error")
+            print("❗ Request error from Google API")
 
 open_gmail()
 
