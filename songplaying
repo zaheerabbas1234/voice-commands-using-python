@@ -1,0 +1,21 @@
+import pywhatkit
+import speech_recognition as sr
+
+# Initialize recognizer
+r = sr.Recognizer()
+
+# Use microphone for input
+with sr.Microphone() as source:
+    print("🎤 Say the name of the song:")
+    audio = r.listen(source)
+
+try:
+    # Convert speech to text
+    song = r.recognize_google(audio)
+    print("✅ You said:", song)
+
+    # Play song on YouTube
+    pywhatkit.playonyt(song)
+
+except:
+    print("❌ Sorry, I could not understand.")
