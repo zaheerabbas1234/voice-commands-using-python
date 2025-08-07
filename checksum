@@ -13,3 +13,72 @@ https://www.programiz.com/online-compiler/99JQS4vSJiaI6
 updated
 =======
 https://www.programiz.com/online-compiler/6LqkYYrKTSTzo
+
+=============================================================
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    char a[9], b[9], res[9];
+    char ones_complement[9];
+    char carry_in_char[9] = "00000001";
+    
+    int carry_out = 0;
+    int i;
+    
+    printf("Enter 8-bit binary number a: ");
+    scanf("%8s", a);
+
+    printf("Enter 8-bit binary number b: ");
+    scanf("%8s", b);
+
+    // Initial 8-bit binary addition
+    carry_out = 0;
+    for (i = 7; i >= 0; i--) 
+    {
+        int sum = (a[i] - '0') + (b[i] - '0') + carry_out;
+        res[i] = (sum % 2) + '0';
+        carry_out = sum / 2;
+    }
+    res[8] = '\0';
+
+    printf("\nInitial 8-bit Sum: %s\n", res);
+    
+    // End-around carry
+    if (carry_out == 1) 
+    {
+        char temp_res[9];
+        int new_carry = 0;
+        
+        // Add the carry_in_char (00000001) to the initial sum (res)
+        new_carry = 0;
+        for (i = 7; i >= 0; i--) 
+        {
+            int sum = (res[i] - '0') + (carry_in_char[i] - '0') + new_carry;
+            temp_res[i] = (sum % 2) + '0';
+            new_carry = sum / 2;
+        }
+        temp_res[8] = '\0';
+
+        strcpy(res, temp_res);
+
+        printf("End-around carry applied. Final 8-bit Sum: %s\n", res);
+    } else {
+        printf("No end-around carry needed. Final 8-bit Sum: %s\n", res);
+    }
+    
+    // Calculate 1's Complement on the final sum
+    for (i = 0; i < 8; i++) {
+        if (res[i] == '0') {
+            ones_complement[i] = '1';
+        } else {
+            ones_complement[i] = '0';
+        }
+    }
+    ones_complement[8] = '\0';
+
+    printf("1's Complement of the final sum: %s\n", ones_complement);
+    
+    return 0;
+}
