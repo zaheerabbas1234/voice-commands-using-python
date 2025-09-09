@@ -1,0 +1,17 @@
+1.what is the difference between c,c++,java,python?
+2.operators in python?
+3.what is the identity operator and membership operator?
+4.selection or branching statements in python?
+5.Loops with Syntaxes?
+6.what is indentation?
+7.what is the use of type function?
+8.what is the input and output statement in python?
+9.who is the father of python?
+10.what is the list and its methods?
+11.what is the tuple and its methods?
+12.what is the sets and methods?
+13.what is the dictionary and methods?
+14.difference between list and tuple?
+15.difference between list and sets?
+16.Accessing and slicing?
+17.What is the string and string methods?
